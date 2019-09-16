@@ -16,7 +16,9 @@ namespace AstartesCodexProject.Data
 
     public Primarch CreatePrimarch(Primarch primarch)
     {
-      int id = _db.ExecuteScalar<int>(@"INSERT INTO primarch (img, name, orgin, flagship, isLoyal)")
+      int id = _db.ExecuteScalar<int>(@"INSERT INTO primarch (img, name, orgin, flagship, isLoyal) VALUES (@Img, @Name, @Orgin, @Flagship, @Isloyal) SELECT LAST_INSERT_ID(); ");
+      primarch.Id = id;
+      return primarch;
     }
   }
 }
