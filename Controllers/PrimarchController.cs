@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AstartesCodexProject.Models;
+using AstartesCodexProject.Data;
 
 namespace AstartesCodexProject.Controllers
 {
@@ -11,6 +12,27 @@ namespace AstartesCodexProject.Controllers
   [ApiController]
   public class PrimarchController : ControllerBase
   {
+
+    private readonly PrimarchRepository _repository;
+    public PrimarchController(PrimarchRepository repository)
+    {
+      _repository = repository;
+    }
+
+    // POST api/values
+    [HttpPost]
+    public ActionResult<Primarch> Post([FromBody] Primarch primarch)
+    {
+      try
+      {
+        return Ok(_repository.CreatePrimarch(primarch));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
     // GET api/values
     [HttpGet]
     public ActionResult<IEnumerable<string>> Get()
@@ -25,11 +47,7 @@ namespace AstartesCodexProject.Controllers
       return "value";
     }
 
-    // POST api/values
-    [HttpPost]
-    public void Post([FromBody] string value)
-    {
-    }
+
 
     // PUT api/values/5
     [HttpPut("{id}")]

@@ -1,0 +1,19 @@
+-- CREATE TABLE primarch(
+--   id int AUTO_INCREMENT NOT NULL,
+--   img VARCHAR(255),
+--   name VARCHAR(255),
+--   orgin VARCHAR(255),
+--   flagship VARCHAR(255),
+--   isLoyal TINYINT DEFAULT 1,
+--   PRIMARY KEY (id)
+-- );
+
+-- CREATE TABLE legion(
+-- id int AUTO_INCREMENT NOT NULL,
+-- img VARCHAR(255),
+-- primarch VARCHAR(255),
+-- legionHomeWorld VARCHAR(255),
+-- legionStory VARCHAR(255),
+-- isLoyal TINYINT DEFAULT 1,
+-- PRIMARY KEY (id)
+-- );
