@@ -35,16 +35,31 @@ namespace AstartesCodexProject.Controllers
 
     // GET api/values
     [HttpGet]
-    public ActionResult<IEnumerable<string>> Get()
+    public ActionResult<IEnumerable<Primarch>> GetAllPrimarch()
     {
-      return new string[] { "value1", "value2" };
+      try
+      {
+        return Ok(_repository.GetAllPrimarch());
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
 
     // GET api/values/5
     [HttpGet("{id}")]
-    public ActionResult<string> Get(int id)
+    public ActionResult<Primarch> Get(int id)
     {
-      return "value";
+      try
+      {
+        return Ok(_repository.GetPrimarchById(id));
+      }
+      catch (Exception e)
+      {
+
+        return BadRequest(e.Message);
+      }
     }
 
 
@@ -57,8 +72,18 @@ namespace AstartesCodexProject.Controllers
 
     // DELETE api/values/5
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public ActionResult<Primarch> DeletePrimarchById(int id)
     {
+      try
+      {
+        return Ok(_repository.DeletePrimarchById(id));
+      }
+
+      catch (Exception e)
+      {
+
+        return BadRequest(e.Message);
+      }
     }
   }
 }

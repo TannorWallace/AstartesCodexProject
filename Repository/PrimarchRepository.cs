@@ -20,5 +20,31 @@ namespace AstartesCodexProject.Data
       primarch.Id = id;
       return primarch;
     }
+
+    public IEnumerable<Primarch> GetAllPrimarch()
+    {
+      return _db.Query<Primarch>("SELECT * FROM primarch");
+    }
+    public Primarch GetPrimarchById(int id)
+    {
+      try
+      {
+        return _db.QuerySingle<Primarch>("SELECT * FROM primarch WHERE id = @id", new { id });
+      }
+      catch (Exception e)
+      {
+        throw new Exception(e.Message);
+      }
+    }
+    public bool DeletePrimarchById(int id)
+    {
+      var compelete = _db.Execute("DELETE FROM primarch WHERE id = @id", new { id });
+      return compelete > 0;
+      {
+        throw new Exception("failed to delete");
+      }
+    }
+
   }
+
 }
