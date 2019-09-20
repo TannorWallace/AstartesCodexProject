@@ -16,7 +16,7 @@ namespace AstartesCodexProject.Data
 
     public Primarch CreatePrimarch(Primarch primarch)
     {
-      int id = _db.ExecuteScalar<int>(@"INSERT INTO primarch (img, name, orgin, flagship, isLoyal) VALUES (@Img, @Name, @Orgin, @Flagship, @Isloyal) SELECT LAST_INSERT_ID(); ");
+      int id = _db.ExecuteScalar<int>(@"INSERT INTO primarch (img, name, orgin, flagship, isLoyal) VALUES (@Img, @Name, @Orgin, @Flagship, @Isloyal); SELECT LAST_INSERT_ID();", primarch);
       primarch.Id = id;
       return primarch;
     }
@@ -38,8 +38,8 @@ namespace AstartesCodexProject.Data
     }
     public bool DeletePrimarchById(int id)
     {
-      var compelete = _db.Execute("DELETE FROM primarch WHERE id = @id", new { id });
-      return compelete > 0;
+      var complete = _db.Execute("DELETE FROM primarch WHERE id = @id", new { id });
+      return complete > 0;
       {
         throw new Exception("failed to delete");
       }
