@@ -33,6 +33,8 @@ namespace AstartesCodexProject
       // TODO register all Transient informations
       services.AddTransient<IDbConnection>(x => CreateDBContext());
       services.AddTransient<PrimarchRepository>();
+      services.AddTransient<LegionRepository>();
+
 
 
 

@@ -17,3 +17,6 @@
 -- isLoyal TINYINT DEFAULT 1,
 -- PRIMARY KEY (id)
 -- );
+
+-- ALTER TABLE legion
+-- ADD name VARCHAR(255);

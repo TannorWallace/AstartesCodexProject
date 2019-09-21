@@ -20,22 +20,49 @@ namespace AstartesCodexProject.Controllers
 
     // POST api/values
     [HttpPost]
-    public void Post([FromBody] string value)
+    public ActionResult<Legion> Post([FromBody] Legion legion)
     {
+      try
+      {
+        return Ok(_repository.CreateLegion(legion));
+      }
+      catch (Exception e)
+      {
+
+        return BadRequest(e.Message);
+      }
     }
 
     // GET api/values
     [HttpGet]
-    public ActionResult<IEnumerable<string>> Get()
+    public ActionResult<IEnumerable<Legion>> GetAllLegion()
     {
-      return new string[] { "value1", "value2" };
+      try
+      {
+        return Ok(_repository.GetAllLegion());
+      }
+      catch (Exception e)
+      {
+
+        return BadRequest(e.Message);
+      }
+
     }
 
     // GET api/values/5
     [HttpGet("{id}")]
-    public ActionResult<string> Get(int id)
+    public ActionResult<Legion> GetLegionById(int id)
     {
-      return "value";
+      try
+      {
+        return Ok(_repository.GetLegionById(id));
+
+      }
+      catch (Exception e)
+      {
+
+        return BadRequest(e.Message);
+      }
     }
 
 
@@ -48,8 +75,18 @@ namespace AstartesCodexProject.Controllers
 
     // DELETE api/values/5
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public ActionResult<Legion> DeleteLegionById(int id)
     {
+      try
+      {
+        return Ok(_repository.DeleteLegionById(id));
+      }
+
+      catch (Exception e)
+      {
+
+        return BadRequest(e.Message);
+      }
     }
   }
 }
