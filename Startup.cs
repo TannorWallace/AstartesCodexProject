@@ -34,6 +34,7 @@ namespace AstartesCodexProject
       services.AddTransient<IDbConnection>(x => CreateDBContext());
       services.AddTransient<PrimarchRepository>();
       services.AddTransient<LegionRepository>();
+      services.AddTransient<NotableAstartesRepository>();
 
 
 
