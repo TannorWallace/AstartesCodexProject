@@ -13,10 +13,15 @@
 -- img VARCHAR(255),
 -- primarch VARCHAR(255),
 -- legionHomeWorld VARCHAR(255),
--- legionStory VARCHAR(255),
+-- legionStory VARCHAR(MAX),
 -- isLoyal TINYINT DEFAULT 1,
 -- PRIMARY KEY (id)
 -- );
 
 -- ALTER TABLE legion
--- ADD name VARCHAR(255);
+-- -- ADD name VARCHAR(255);
+-- MODIFY COLUMN legionStory VARCHAR(65535);
+
+-- ALTER TABLE primarch
+-- MODIFY COLUMN orgin VARCHAR(65535);
+
