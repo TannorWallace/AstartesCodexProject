@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AstartesCodexProject.Models;
+using AstartesCodexProject.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AstartesCodexProject.Controllers
@@ -10,6 +12,28 @@ namespace AstartesCodexProject.Controllers
   [ApiController]
   public class NotableAstartesController : ControllerBase
   {
+    private readonly NotableAstartesRepository _repository;
+    public NotableAstartesController(NotableAstartesRepository repository)
+    {
+      _repository = repository;
+    }
+
+    // POST api/values
+    [HttpPost]
+    public ActionResult<NotableAstartes> Post([FromBody] NotableAstartes notableAstartes)
+    {
+      try
+      {
+        return Ok(_repository.CreateNotableAstartes(notableAstartes));
+      }
+      catch (System.Exception)
+      {
+
+        throw;
+      }
+    }
+
+
     // GET api/values
     [HttpGet]
     public ActionResult<IEnumerable<string>> Get()
@@ -24,11 +48,7 @@ namespace AstartesCodexProject.Controllers
       return "value";
     }
 
-    // POST api/values
-    [HttpPost]
-    public void Post([FromBody] string value)
-    {
-    }
+
 
     // PUT api/values/5
     [HttpPut("{id}")]
