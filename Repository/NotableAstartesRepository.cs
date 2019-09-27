@@ -21,5 +21,42 @@ namespace AstartesCodexProject.Data
       notableAstartes.Id = id;
       return notableAstartes;
     }
+
+    internal object GetAllNotableAstartes()
+    {
+      try
+      {
+        return _db.Query<NotableAstartes>("SELECT * FROM notableAstartes");
+      }
+      catch (Exception e)
+      {
+        throw new Exception(e.Message);
+      }
+
+    }
+
+    public NotableAstartes GetNotableAstartesById(int id)
+    {
+      try
+      {
+
+        return _db.QuerySingle<NotableAstartes>("SELECT *FROM notableAstartes WHERE id = @id", new { id });
+
+      }
+      catch (Exception e)
+      {
+
+        throw new Exception(e.Message);
+      }
+    }
+
+    public bool DeleteNotableAstartesById(int id)
+    {
+      var complete = _db.Execute("DELETE FROM notableAstartes WHERE id = @id", new { id });
+      return complete > 0;
+      {
+        throw new Exception("Only in death does duty end!");
+      }
+    }
   }
 }

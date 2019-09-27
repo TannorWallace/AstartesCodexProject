@@ -26,26 +26,44 @@ namespace AstartesCodexProject.Controllers
       {
         return Ok(_repository.CreateNotableAstartes(notableAstartes));
       }
-      catch (System.Exception)
+      catch (Exception e)
       {
 
-        throw;
+        return BadRequest(e.Message);
       }
     }
 
 
     // GET api/values
     [HttpGet]
-    public ActionResult<IEnumerable<string>> Get()
+    public ActionResult<IEnumerable<NotableAstartes>> GetAllNotableAstartes()
     {
-      return new string[] { "value1", "value2" };
+      try
+      {
+        return Ok(_repository.GetAllNotableAstartes());
+
+      }
+      catch (Exception e)
+      {
+
+        return BadRequest(e.Message);
+      }
+
     }
 
     // GET api/values/5
     [HttpGet("{id}")]
-    public ActionResult<string> Get(int id)
+    public ActionResult<NotableAstartes> GetNotableAstartesById(int id)
     {
-      return "value";
+      try
+      {
+        return Ok(_repository.GetNotableAstartesById(id));
+      }
+      catch (System.Exception)
+      {
+
+        throw;
+      }
     }
 
 
@@ -58,8 +76,17 @@ namespace AstartesCodexProject.Controllers
 
     // DELETE api/values/5
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public ActionResult<NotableAstartes> DeleteNotableAstartesById(int id)
     {
+      try
+      {
+        return Ok(_repository.DeleteNotableAstartesById(id));
+      }
+      catch (Exception e)
+      {
+
+        return BadRequest(e.Message);
+      }
     }
   }
 }
