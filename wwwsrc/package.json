@@ -1,18 +1,20 @@
 {
-  "name": "wwwsrc",
-  "version": "1.0.0",
-  "description": "Astartes",
-  "main": "index.js",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "esm": "^3.2.25",
-    "express": "^4.17.1",
-    "mongoose": "^5.7.4"
-  },
-  "devDependencies": {},
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
   },
-  "author": "Tannor Wallace",
-  "license": "ISC"
+  "dependencies": {
+    "register-service-worker": "^1.6.2",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-pwa": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "vue-template-compiler": "^2.6.10"
+  }
 }
