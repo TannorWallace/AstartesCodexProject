@@ -20,10 +20,14 @@ export default new Vuex.Store({
 
 
 
+
   },
   mutations: {
     setPrimarch(state, data) {
       state.Primarchs = data
+    },
+    setSelectedPrimarch(state, data) {
+      state.selectedPrimarch = data
     }
 
   },
@@ -32,6 +36,13 @@ export default new Vuex.Store({
       try {
         let res = await api.get('primarch')
         commit('setPrimarch', res.data)
+      }
+      catch (error) { console.log(error) }
+    },
+    async getPrimarchById({ dispatch, commit }, payload) {
+      try {
+        let res = await api.get('primarch/' + payload)
+        commit('setSelectedPrimarch', res.data)
       }
       catch (error) { console.log(error) }
     }

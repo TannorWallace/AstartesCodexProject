@@ -3,10 +3,10 @@
     <h2>The Primarchs</h2>
     <div class="row Primarchs" v-for="Primarch in Primarch">
       <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="Primarch.img" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{Primarch.name}}</h5>
-          <p class="card-text">
+          <h5 class="card-title">{{primarch.name}}</h5>
+          <p class="card-text">{{primarch.orgin}}
           </p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>

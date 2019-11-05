@@ -7,6 +7,7 @@
 
 
 <script>
+
   import PrimarchComponent from '@/components/PrimarchComponent.vue'
 
   export default {
