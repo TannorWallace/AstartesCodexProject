@@ -10,7 +10,7 @@ let baseUrl = location.host.includes('localhost') ? '//localhost:5000/' : '/'
 
 let api = Axios.create({
   baseURL: baseUrl + "api/",
-  timeout: 3000,
+  timeout: 3000
 })
 
 export default new Vuex.Store({
@@ -30,18 +30,19 @@ export default new Vuex.Store({
       state.selectedPrimarch = data
     }
 
+
   },
   actions: {
-    async getPrimarchs({ dispatch, commit }) {
+    async getPrimarch({ dispatch, commit }) {
       try {
-        let res = await api.get('primarch')
+        let res = await api.get('Primarch')
         commit('setPrimarch', res.data)
       }
       catch (error) { console.log(error) }
     },
     async getPrimarchById({ dispatch, commit }, payload) {
       try {
-        let res = await api.get('primarch/' + payload)
+        let res = await api.get('Primarch/' + payload)
         commit('setSelectedPrimarch', res.data)
       }
       catch (error) { console.log(error) }
