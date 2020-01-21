@@ -1,12 +1,13 @@
 <template>
   <div class="container-fluid border border-dark">
     <h2>The Primarchs</h2>
+    <h1>is this even working!?</h1>
     <div class="row">
-      <div class="Primarchs" v-for="Primarch in Primarch" style="width: 18rem;">
+      <div class="Primarchs" v-for="Primarch in Primarch">
         <div class="card-body">
           <img src="Primarch.img" class="card-img-top" alt="...">
-          <h5 class="card-title">{{Primarch.Name}}</h5>
-          <p class="card-text">{{Primarch.Orgin}} </p>
+          <h5 class="card-title">{{primarch.name}}</h5>
+          <p class="card-text">{{primarch.orgin}} </p>
           <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
         </div>
       </div>
@@ -27,11 +28,11 @@
       return {}
     },
     mounted() {
-      this.$store.dispatch('getPrimarchs')
+      this.$store.dispatch('getPrimarch')
     },
     // add a mounted for the store here?
     computed: {
-      Primarchs() {
+      Primarch() {
         return this.$store.state.Primarch
       }
     },

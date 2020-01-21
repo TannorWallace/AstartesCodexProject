@@ -3,6 +3,7 @@ using Dapper;
 using System.Data;
 using AstartesCodexProject.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AstartesCodexProject.Data
 {
